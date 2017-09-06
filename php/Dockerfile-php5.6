@@ -1,0 +1,11 @@
+FROM armhf/php:5.6-apache
+MAINTAINER rubberBoy <gaosheng08@gmail.com>
+
+RUN apt-get update \
+    && apt-get install zlib1g.dev \
+    && rm -r /var/lib/apt/lists/* \
+    && pecl install xdebug \
+    && yes 'n' | pecl install memcache \
+    && rm -r /tmp/*
+
+EXPOSE 9000
